@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/React.js-weather-app/static/css/main.1b4d80ea.chunk.css",
+    "main.js": "/React.js-weather-app/static/js/main.b611710b.chunk.js",
+    "main.js.map": "/React.js-weather-app/static/js/main.b611710b.chunk.js.map",
+    "runtime~main.js": "/React.js-weather-app/static/js/runtime~main.4b69f79b.js",
+    "runtime~main.js.map": "/React.js-weather-app/static/js/runtime~main.4b69f79b.js.map",
+    "static/js/2.3ce1be0b.chunk.js": "/React.js-weather-app/static/js/2.3ce1be0b.chunk.js",
+    "static/js/2.3ce1be0b.chunk.js.map": "/React.js-weather-app/static/js/2.3ce1be0b.chunk.js.map",
+    "index.html": "/React.js-weather-app/index.html",
+    "precache-manifest.e3ec2f2c1cceef055a4084d5a614177d.js": "/React.js-weather-app/precache-manifest.e3ec2f2c1cceef055a4084d5a614177d.js",
+    "service-worker.js": "/React.js-weather-app/service-worker.js",
+    "static/css/main.1b4d80ea.chunk.css.map": "/React.js-weather-app/static/css/main.1b4d80ea.chunk.css.map",
+    "static/media/01d.png": "/React.js-weather-app/static/media/01d.4111c3e9.png",
+    "static/media/01n.png": "/React.js-weather-app/static/media/01n.9266f179.png",
+    "static/media/02d.png": "/React.js-weather-app/static/media/02d.304dac01.png",
+    "static/media/02n.png": "/React.js-weather-app/static/media/02n.0aaecdd1.png",
+    "static/media/04d.png": "/React.js-weather-app/static/media/04d.7cb0000e.png",
+    "static/media/04n.png": "/React.js-weather-app/static/media/04n.7cb0000e.png",
+    "static/media/09d.png": "/React.js-weather-app/static/media/09d.8d1bd194.png",
+    "static/media/09n.png": "/React.js-weather-app/static/media/09n.8d1bd194.png",
+    "static/media/10d.png": "/React.js-weather-app/static/media/10d.3b462da4.png",
+    "static/media/10n.png": "/React.js-weather-app/static/media/10n.c7fc62e6.png",
+    "static/media/11d.png": "/React.js-weather-app/static/media/11d.875461fd.png",
+    "static/media/11n.png": "/React.js-weather-app/static/media/11n.875461fd.png",
+    "static/media/13d.png": "/React.js-weather-app/static/media/13d.736bac1d.png",
+    "static/media/13n.png": "/React.js-weather-app/static/media/13n.736bac1d.png",
+    "static/media/arrow.png": "/React.js-weather-app/static/media/arrow.25b98732.png",
+    "static/media/rwd.png": "/React.js-weather-app/static/media/rwd.f7763b89.png"
+  }
+}
