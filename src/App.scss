@@ -1,0 +1,318 @@
+$colors: (
+  primary: #005dff,
+  primary-light: lighten(#005dff, 40%),
+  primary-dark: darken(#005dff, 40%),
+  secondary: #ffffff,
+  backgr: rgb(255, 255, 255),
+  accent: #ffff33
+);
+
+$padding: 15px;
+$borders: 15px;
+
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}
+
+$desktop: 900px;
+$desktopBigger: 1350px;
+
+@mixin desktop {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}
+
+@mixin desktopBigger {
+  @media (min-width: #{$desktopBigger}) {
+    @content;
+  }
+}
+
+body,
+html {
+  height: 100%;
+}
+
+body {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  margin: 0;
+
+  #bg {
+    clip-path: polygon(0 0, 100% 0, 100% 78%, 37% 100%, 0 100%);
+    background-image: linear-gradient(
+      to right bottom,
+      #0000a1,
+      #2c48fe,
+      #2859ff,
+      #4278ff,
+      #608efa
+    );
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+
+    @include desktop {
+      clip-path: polygon(0 0, 77% 0, 52% 100%, 0% 100%);
+    }
+  }
+
+  header h3 {
+    font-size: 30px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    padding: $padding;
+    display: block;
+    border-block-end-style: groove;
+    border-color: #e4d018;
+    border-radius: 20px;
+    border-right-style: groove;
+    width: 210px;
+    margin: 0 0 30px 5px;
+    border-width: 5px;
+  }
+}
+
+main {
+  section#card {
+    background: color(backgr);
+    padding: 20px;
+    margin: 1em auto;
+    border-radius: $borders;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    width: 70%;
+    height: 220px;
+
+    @include desktop {
+      width: 35%;
+      height: 250px;
+      position: absolute;
+      z-index: 1;
+      left: 56%;
+      top: 15%;
+    }
+
+    h3 {
+      position: relative;
+      padding-top: 20px;
+      top: 15%;
+      left: 5%;
+      line-height: 80%;
+      font-size: 15px;
+
+      @include desktop {
+        position: absolute;
+
+        padding-top: 0px;
+        top: 30%;
+        left: 7%;
+        line-height: 80%;
+        font-size: 20px;
+      }
+    }
+
+    label #location {
+      position: relative;
+      left: 5%;
+      font-size: 30px;
+
+      @include desktop {
+        position: absolute;
+        font-size: 30px;
+      }
+    }
+
+    label #data {
+      position: relative;
+      left: 5%;
+      margin-top: 0;
+
+      @include desktop {
+        position: absolute;
+        top: 12%;
+        left: 5%;
+        margin-top: 20px;
+      }
+    }
+
+    label #icon {
+      position: absolute;
+      left: 60%;
+      width: 150px;
+      top: 15%;
+
+      @include desktop {
+        position: absolute;
+        left: 65%;
+        top: 15%;
+        width: 30%;
+      }
+    }
+  }
+
+  section#primary {
+    color: color(secondary);
+    padding: $padding;
+    text-align: center;
+
+    @include desktop {
+      display: grid;
+      grid-template-columns: 35% auto;
+      text-align: left;
+      margin: 5em 0 0 4em;
+    }
+
+    span {
+      position: relative;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-top: 10px;
+      text-transform: uppercase;
+      color: black;
+
+      @include desktop {
+        margin-left: -5%;
+        margin-top: 8%;
+        width: 30%;
+        font-size: 4em;
+        line-height: 0.9em;
+        color: rgb(0, 0, 0);
+        position: absolute;
+        z-index: 1;
+      }
+    }
+
+    input {
+      width: 200px;
+      font-size: 18px;
+      outline: none;
+      text-align: center;
+      height: 30px;
+      width: 80%;
+      margin: 30px auto 20px auto;
+      border-radius: $borders;
+
+      @include desktop {
+        position: absolute;
+        z-index: 1;
+        top: 300px;
+        left: 10%;
+        width: 350px;
+        text-align: center;
+        height: 30px;
+        width: 80%;
+        margin: 30px auto 20px auto;
+        border-radius: $borders;
+      }
+    }
+
+    p {
+      font-size: 1.4em;
+      color: rgb(0, 0, 0);
+      font-style: italic;
+
+      @include desktop {
+        position: absolute;
+        top: 180%;
+        left: 20%;
+        font-size: 1.8em;
+        line-height: 0.9em;
+      }
+    }
+
+    button {
+      color: color(primary-dark);
+      border-radius: $borders;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: bold;
+      background-color: color(accent);
+      display: block;
+      text-align: center;
+      margin: 30px auto 0 auto;
+      padding: $padding;
+      width: 50%;
+      transition: 0.5s;
+      display: none;
+
+      @include desktop {
+        position: absolute;
+        top: 400px;
+        left: 20%;
+        width: 300px;
+        font-size: 2em;
+        line-height: 0.9em;
+        display: block;
+        outline: none;
+        cursor: pointer;
+        transition: 0.3s;
+        position: absolute;
+        z-index: 1;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+}
+
+aside {
+  display: none;
+  position: relative;
+
+  @include desktop {
+    display: block;
+  }
+  #infoBox {
+    display: none;
+
+    @include desktop {
+      position: absolute;
+      display: block;
+      font-family: "Kalam", cursive;
+      font-weight: 700;
+      width: 35vw;
+      font-size: 20px;
+      top: 280px;
+      line-height: 150%;
+    }
+
+    ul {
+      list-style-type: square;
+    }
+  }
+}
+
+.fade-enter {
+  animation-name: fadeIn;
+  animation-duration: 1.5s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.map {
+  opacity: 0;
+  position: absolute;
+  z-index: -2;
+  top: 0;
+  left: 0;
+
+  @include desktop {
+    opacity: 1;
+    position: absolute;
+    z-index: 0;
+    top: 5%;
+    left: -16%;
+  }
+}
