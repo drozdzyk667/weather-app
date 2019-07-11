@@ -14,11 +14,18 @@ $borders: 15px;
   @return map-get($colors, $color-name);
 }
 
-$desktop: 900px;
-$desktopBigger: 1350px;
+$desktop: 950px;
+$desktopMiddle: 1350px;
+$desktopBigger: 1400px;
 
 @mixin desktop {
   @media (min-width: #{$desktop}) {
+    @content;
+  }
+}
+
+@mixin desktopMiddle {
+  @media (min-width: #{$desktopMiddle}) {
     @content;
   }
 }
@@ -83,6 +90,9 @@ main {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     width: 70%;
     height: 220px;
+    position: absolute;
+    top: 400px;
+    left: 10%;
 
     @include desktop {
       width: 35%;
@@ -90,20 +100,18 @@ main {
       position: absolute;
       z-index: 1;
       left: 56%;
-      top: 15%;
+      top: 10%;
     }
 
     h3 {
       position: relative;
       padding-top: 20px;
-      top: 15%;
       left: 5%;
       line-height: 80%;
       font-size: 15px;
 
       @include desktop {
         position: absolute;
-
         padding-top: 0px;
         top: 30%;
         left: 7%;
@@ -168,16 +176,29 @@ main {
     }
 
     h1 {
-      font-size: 3em;
-      margin-top: 10px;
+      position: absolute;
+      font-size: 2.5em;
+      top: -250px;
+      left: 20px;
       text-transform: uppercase;
       color: black;
 
       @include desktop {
-        margin-left: -5%;
-        margin-top: 8%;
+        left: -5%;
+        top: 8%;
         width: 30%;
-        font-size: 4em;
+        font-size: 4vw;
+        line-height: 0.9em;
+        color: rgb(0, 0, 0);
+        position: absolute;
+        z-index: 1;
+      }
+
+      @include desktopBigger() {
+        left: -5%;
+        top: 8%;
+        width: 30%;
+        font-size: 4.5em;
         line-height: 0.9em;
         color: rgb(0, 0, 0);
         position: absolute;
@@ -192,13 +213,26 @@ main {
       text-align: center;
       height: 30px;
       width: 80%;
-      margin: 30px auto 20px auto;
+      margin: 200px auto 20px auto;
       border-radius: $borders;
 
       @include desktop {
         position: absolute;
         z-index: 1;
-        top: 300px;
+        top: 22vw;
+        left: 10%;
+        width: 350px;
+        text-align: center;
+        height: 30px;
+        width: 80%;
+        margin: 0px auto 20px auto;
+        border-radius: $borders;
+      }
+
+      @include desktopBigger {
+        position: absolute;
+        z-index: 1;
+        top: 22vw;
         left: 10%;
         width: 350px;
         text-align: center;
@@ -240,7 +274,7 @@ main {
 
       @include desktop {
         position: absolute;
-        top: 400px;
+        top: 25vw;
         left: 20%;
         width: 300px;
         font-size: 2em;
@@ -252,8 +286,28 @@ main {
         position: absolute;
         z-index: 1;
 
-        &:hover {
-          transform: scale(1.1);
+        @include desktopBigger {
+          position: absolute;
+          top: 28vw;
+          left: 20%;
+          width: 300px;
+          font-size: 2em;
+          line-height: 0.9em;
+          display: block;
+          outline: none;
+          cursor: pointer;
+          transition: 0.3s;
+          position: absolute;
+          z-index: 1;
+
+          &:hover:disabled {
+            transform: scale(1);
+            cursor: not-allowed;
+          }
+
+          &:hover {
+            transform: scale(1.1);
+          }
         }
       }
     }
@@ -276,9 +330,20 @@ aside {
       font-family: "Kalam", cursive;
       font-weight: 700;
       width: 35vw;
-      font-size: 20px;
-      top: 280px;
+      font-size: 18px;
+      top: 38vh;
       line-height: 150%;
+
+      @include desktopBigger {
+        position: absolute;
+        display: block;
+        font-family: "Kalam", cursive;
+        font-weight: 700;
+        width: 35vw;
+        font-size: 22px;
+        top: 30vh;
+        line-height: 180%;
+      }
     }
 
     ul {
@@ -309,6 +374,14 @@ aside {
   left: 0;
 
   @include desktop {
+    opacity: 0;
+    position: absolute;
+    z-index: 0;
+    top: 5%;
+    left: -16%;
+  }
+
+  @include desktopMiddle {
     opacity: 1;
     position: absolute;
     z-index: 0;

@@ -157,32 +157,30 @@ class App extends Component {
           <h3>Weather's App</h3>
         </header>
         <main>
-          <section id="card">
-            <div
-              className={this.state.location ? "fade-enter" : null}
-              style={this.state.location ? { opacity: "1" } : { opacity: "0" }}
-            >
-              <label>
-                <span id="location">{this.state.location}</span>
-                <p id="data">{this.state.date}</p>
-                <img id="icon" src={this.state.src} alt="Fetching img" />
-              </label>
-              <h3>
-                <p>
-                  Temperature: <span id="temp">{this.state.temp}</span>
-                </p>
-                <p>
-                  Pressure: <span id="pressure">{this.state.pressure}</span>
-                </p>
-                <p>
-                  Humidity: <span id="humidity">{this.state.humidity}</span>
-                </p>
-                <p>
-                  Wind speed:{" "}
-                  <span id="wind-speed">{this.state.windSpeed}</span>
-                </p>
-              </h3>
-            </div>
+          <section
+            id="card"
+            className={this.state.location ? "fade-enter" : null}
+            style={this.state.location ? { opacity: "1" } : { opacity: "0" }}
+          >
+            <label>
+              <span id="location">{this.state.location}</span>
+              <p id="data">{this.state.date}</p>
+              <img id="icon" src={this.state.src} alt="Fetching img" />
+            </label>
+            <h3>
+              <p>
+                Temperature: <span id="temp">{this.state.temp}</span>
+              </p>
+              <p>
+                Pressure: <span id="pressure">{this.state.pressure}</span>
+              </p>
+              <p>
+                Humidity: <span id="humidity">{this.state.humidity}</span>
+              </p>
+              <p>
+                Wind speed: <span id="wind-speed">{this.state.windSpeed}</span>
+              </p>
+            </h3>
           </section>
 
           <section id="primary">
@@ -215,7 +213,7 @@ class App extends Component {
           zoomButtons={false}
           containerStyle={{
             width: "100%",
-            height: "300px"
+            height: "40%"
           }}
           containerClassName="map"
           regionStyle={{
@@ -228,13 +226,12 @@ class App extends Component {
             },
             hover: {
               "fill-opacity": 1,
-              fill: "#e6e6e6",
+              fill: "#e6e6ff",
               cursor: "pointer"
             },
             selected: {
               fill: "#ff0000"
-            },
-            selectedHover: {}
+            }
           }}
           selectedRegions={this.state.country}
         />
