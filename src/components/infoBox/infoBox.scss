@@ -1,0 +1,61 @@
+$colors: (
+  primary: #005dff,
+  primary-light: lighten(#005dff, 40%),
+  primary-dark: darken(#005dff, 40%),
+  secondary: #ffffff,
+  backgr: rgb(255, 255, 255),
+  accent: #ffff33
+);
+
+$padding: 15px;
+$borders: 15px;
+
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}
+
+$desktop: 950px;
+$desktopMiddle: 1350px;
+$desktopBigger: 1400px;
+
+@mixin desktop {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}
+
+@mixin desktopBigger {
+  @media (min-width: #{$desktopBigger}) {
+    @content;
+  }
+}
+
+#infoBox {
+  display: none;
+
+  @include desktop {
+    position: absolute;
+    display: block;
+    font-family: "Kalam", cursive;
+    font-weight: 700;
+    width: 35vw;
+    font-size: 18px;
+    top: 38vh;
+    line-height: 150%;
+
+    @include desktopBigger {
+      position: absolute;
+      display: block;
+      font-family: "Kalam", cursive;
+      font-weight: 700;
+      width: 35vw;
+      font-size: 22px;
+      margin-top: -4vw;
+      line-height: 180%;
+    }
+  }
+
+  ul {
+    list-style-type: square;
+  }
+}

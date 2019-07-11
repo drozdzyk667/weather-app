@@ -1,20 +1,9 @@
 import React, { Component } from "react";
 import "./App.scss";
-import { Transition } from "react-transition-group";
+import Card from "./components/card/card";
+import Primary from "./components/primary/primary";
+import InfoBox from "./components/infoBox/infoBox";
 import { VectorMap } from "react-jvectormap";
-
-const duration = 700;
-
-const defaultStyle = {
-  transition: `left ${duration}ms linear`,
-  position: "absolute",
-  top: "61%"
-};
-
-const transitionStyles = {
-  entering: { left: "0", opacity: "0" },
-  entered: { left: "62%", opacity: "1" }
-};
 
 class App extends Component {
   state = {
@@ -25,7 +14,6 @@ class App extends Component {
     windSpeed: "",
     pressure: "",
     temp: "",
-    info: "",
     w1: "",
     w2: "",
     w3: "",
@@ -150,58 +138,27 @@ class App extends Component {
       <div className="App">
         <div id="bg" />
 
-        <div />
         <header>
           <h3>Weather's App</h3>
         </header>
-        <main>
-          <section
-            id="card"
-            className={this.state.location ? "fade-enter" : null}
-            style={this.state.location ? { opacity: "1" } : { opacity: "0" }}
-          >
-            <label>
-              <span id="location">{this.state.location}</span>
-              <p id="data">{this.state.date}</p>
-              <img id="icon" src={this.state.src} alt="Fetching img" />
-            </label>
-            <h3>
-              <p>
-                Temperature: <span id="temp">{this.state.temp}</span>
-              </p>
-              <p>
-                Pressure: <span id="pressure">{this.state.pressure}</span>
-              </p>
-              <p>
-                Humidity: <span id="humidity">{this.state.humidity}</span>
-              </p>
-              <p>
-                Wind speed: <span id="wind-speed">{this.state.windSpeed}</span>
-              </p>
-            </h3>
-          </section>
 
-          <section id="primary">
-            <span>
-              <h1>Your personal Weather Assistant</h1>
-              <input
-                type="text"
-                onChange={this.handleInputCity}
-                onKeyPress={this.handleEnter}
-                value={this.state.city}
-                placeholder="enter city name"
-              />
-              <button
-                style={
-                  this.state.location ? { opacity: "1" } : { opacity: "0.75" }
-                }
-                disabled={!this.state.location}
-                onClick={this.handleVisible}
-              >
-                {this.state.location ? "Get help" : "Input City"}
-              </button>
-            </span>
-          </section>
+        <main>
+          <Card
+            location={this.state.location}
+            date={this.state.date}
+            src={this.state.src}
+            temp={this.state.temp}
+            pressure={this.state.pressure}
+            humidity={this.state.humidity}
+            windSpeed={this.state.windSpeed}
+          />
+          <Primary
+            handleInputCity={this.handleInputCity}
+            handleEnter={this.handleEnter}
+            city={this.state.city}
+            location={this.state.location}
+            handleVisible={this.handleVisible}
+          />
         </main>
 
         <VectorMap
@@ -235,33 +192,15 @@ class App extends Component {
         />
 
         <aside>
-          <Transition in={this.state.in} timeout={0}>
-            {state => (
-              <div
-                style={{
-                  ...defaultStyle,
-                  ...transitionStyles[state]
-                }}
-              >
-                <div
-                  id="infoBox"
-                  style={
-                    this.state.visible
-                      ? { display: "block" }
-                      : { display: "none" }
-                  }
-                >
-                  <ul>
-                    <li id="w1">{this.state.w1}</li>
-                    <li id="w2">{this.state.w2}</li>
-                    <li id="w3">{this.state.w3}</li>
-                    <li id="w4">{this.state.w4}</li>
-                    <li id="w5">{this.state.w5}</li>
-                  </ul>
-                </div>
-              </div>
-            )}
-          </Transition>
+          <InfoBox
+            visible={this.state.visible}
+            in={this.state.in}
+            w1={this.state.w1}
+            w2={this.state.w2}
+            w3={this.state.w3}
+            w4={this.state.w4}
+            w5={this.state.w5}
+          />
         </aside>
       </div>
     );

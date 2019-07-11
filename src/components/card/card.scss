@@ -1,0 +1,122 @@
+$colors: (
+  primary: #005dff,
+  primary-light: lighten(#005dff, 40%),
+  primary-dark: darken(#005dff, 40%),
+  secondary: #ffffff,
+  backgr: rgb(255, 255, 255),
+  accent: #ffff33
+);
+
+$padding: 15px;
+$borders: 15px;
+
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}
+
+$desktop: 950px;
+$desktopMiddle: 1350px;
+$desktopBigger: 1400px;
+
+@mixin desktop {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}
+
+@mixin desktopBigger {
+  @media (min-width: #{$desktopBigger}) {
+    @content;
+  }
+}
+
+section#card {
+  background: color(backgr);
+  padding: 20px;
+  margin: 1em auto;
+  border-radius: $borders;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  width: 70%;
+  height: 220px;
+  position: absolute;
+  top: 400px;
+  left: 10%;
+
+  @include desktop {
+    width: 35%;
+    height: 250px;
+    position: absolute;
+    z-index: 1;
+    left: 56%;
+    top: 10%;
+  }
+
+  h3 {
+    position: relative;
+    padding-top: 20px;
+    left: 5%;
+    line-height: 80%;
+    font-size: 15px;
+
+    @include desktop {
+      position: absolute;
+      padding-top: 0px;
+      top: 30%;
+      left: 7%;
+      line-height: 80%;
+      font-size: 20px;
+    }
+  }
+
+  label #location {
+    position: relative;
+    left: 5%;
+    font-size: 30px;
+
+    @include desktop {
+      position: absolute;
+      font-size: 30px;
+    }
+  }
+
+  label #data {
+    position: relative;
+    left: 5%;
+    margin-top: 0;
+
+    @include desktop {
+      position: absolute;
+      top: 12%;
+      left: 5%;
+      margin-top: 20px;
+    }
+  }
+
+  label #icon {
+    position: absolute;
+    left: 60%;
+    width: 150px;
+    top: 15%;
+
+    @include desktop {
+      position: absolute;
+      left: 65%;
+      top: 15%;
+      width: 30%;
+    }
+  }
+}
+
+.fade-enter {
+  animation-name: fadeIn;
+  animation-duration: 1.5s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
