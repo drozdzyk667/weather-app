@@ -83,8 +83,6 @@ class App extends Component {
             country: data.sys.country
           });
 
-          console.log(data);
-
           if (temp > 27) {
             this.setState({
               w1: `It's HOT !`,
