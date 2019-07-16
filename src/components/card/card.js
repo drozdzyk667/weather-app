@@ -15,7 +15,7 @@ const Card = props => {
       </label>
       <h3>
         <p>
-          Temperature: <span id="temp">{props.temp}</span>
+          Temperature: <span id="temp">{props.temperature}</span>
         </p>
         <p>
           Pressure: <span id="pressure">{props.pressure}</span>

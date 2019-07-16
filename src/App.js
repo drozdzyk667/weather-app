@@ -13,14 +13,14 @@ class App extends Component {
     humidity: "",
     windSpeed: "",
     pressure: "",
-    temp: "",
-    w1: "",
-    w2: "",
-    w3: "",
-    w4: "",
-    w5: "",
+    temperature: "",
+    message1: "",
+    message2: "",
+    message3: "",
+    message4: "",
+    message5: "",
     visible: false,
-    in: false,
+    IsAnimationStarted: false,
     country: ""
   };
 
@@ -34,12 +34,12 @@ class App extends Component {
     let month = date.getMonth() + 1;
     let day = date.getDate();
 
-    if (day < 10) {
-      day = `0${day}`;
+    if (month < 10) {
+      month = month.toString().padStart(2, 0);
     }
 
-    if (month < 10) {
-      month = `0${month}`;
+    if (day < 10) {
+      day = day.toString().padStart(2, 0);
     }
 
     this.setState({
@@ -47,8 +47,8 @@ class App extends Component {
     });
   };
 
-  handleEnter = e => {
-    if (e.key === "Enter") {
+  handleEnter = event => {
+    if (event.key === "Enter") {
       const images = require.context("./img/", false);
 
       fetch(
@@ -58,58 +58,58 @@ class App extends Component {
       )
         .then(response => response.json())
         .then(data => {
-          let temp = data.main.temp - 273.15;
+          let temperature = data.main.temp - 273.15;
 
           this.setState({
             location: data.name,
             humidity: data.main.humidity + " %",
             windSpeed: data.wind.speed + " m/s",
             pressure: data.main.pressure + " hPa",
-            temp: temp.toFixed(1) + " °C",
+            temperature: temperature.toFixed(1) + " °C",
             src: images(`./${data.weather[0].icon}.png`),
             city: "",
             country: data.sys.country
           });
 
-          if (temp > 27) {
+          if (temperature > 27) {
             this.setState({
-              w1: `It's HOT !`,
-              w2: `Light clothes definitely`,
-              w3: `Don't forget your sunbath creme!`,
-              w4: `Some hat to prevent sunstroke`,
-              w5: `Take some time off work and enjoy beautiful weather !`
+              message1: `It's HOT !`,
+              message2: `Light clothes definitely`,
+              message3: `Don't forget your sunbath creme!`,
+              message4: `Some hat to prevent sunstroke`,
+              message5: `Take some time off work and enjoy beautiful weather !`
             });
-          } else if (temp > 18 && temp <= 27) {
+          } else if (temperature > 18 && temperature <= 27) {
             this.setState({
-              w1: `It's going to be quite HOT`,
-              w2: `Don't take your jacket with you`,
-              w3: `Sunbath creme is not needed yet`,
-              w4: `Your forehead might be sweaty, tissue will be helpful`,
-              w5: `be always prepared for unexpected weather changes, umbrella is a good pick`
+              message1: `It's going to be quite HOT`,
+              message2: `Don't take your jacket with you`,
+              message3: `Sunbath creme is not needed yet`,
+              message4: `Your forehead might be sweaty, tissue will be helpful`,
+              message5: `be always prepared for unexpected weather changes, umbrella is a good pick`
             });
-          } else if (temp > 12 && temp <= 18) {
+          } else if (temperature > 12 && temperature <= 18) {
             this.setState({
-              w1: `It's warm but don't be disappointed`,
-              w2: `Light jacket is a good choice`,
-              w3: `Hoodie seems to be a good pick either`,
-              w4: `Don't forget to cover your ears against wind`,
-              w5: `be always prepared for unexpected precipitation`
+              message1: `It's warm but don't be disappointed`,
+              message2: `Light jacket is a good choice`,
+              message3: `Hoodie seems to be a good pick either`,
+              message4: `Don't forget to cover your ears against wind`,
+              message5: `be always prepared for unexpected precipitation`
             });
-          } else if (temp > 0 && temp <= 12) {
+          } else if (temperature > 0 && temperature <= 12) {
             this.setState({
-              w1: `"Winter is coming !"`,
-              w2: `Jacket, scarf and a head cover is a must`,
-              w3: `Hoodie or sweater seems to be good good pick either`,
-              w4: `Don't forget to cover your ears against wind`,
-              w5: `be always prepared for unexpected precipitation`
+              message1: `"Winter is coming !"`,
+              message2: `Jacket, scarf and a head cover is a must`,
+              message3: `Hoodie or sweater seems to be good good pick either`,
+              message4: `Don't forget to cover your ears against wind`,
+              message5: `be always prepared for unexpected precipitation`
             });
-          } else if (temp <= 0) {
+          } else if (temperature <= 0) {
             this.setState({
-              w1: `Winter is here, brr...`,
-              w2: `Definitely thick jacket`,
-              w3: `Few tons of clothes under your jacket`,
-              w4: `Warm socks and boots`,
-              w5: `....forget about these tips, just stay at home !`
+              message1: `Winter is here, brr...`,
+              message2: `Definitely thick jacket`,
+              message3: `Few tons of clothes under your jacket`,
+              message4: `Warm socks and boots`,
+              message5: `....forget about these tips, just stay at home !`
             });
           }
         })
@@ -120,16 +120,16 @@ class App extends Component {
     }
   };
 
-  handleInputCity = e => {
+  handleInputCity = event => {
     this.setState({
-      city: e.target.value
+      city: event.target.value
     });
   };
 
   handleVisible = () => {
     this.setState({
       visible: !this.state.visible,
-      in: !this.state.in
+      IsAnimationStarted: !this.state.IsAnimationStarted
     });
   };
 
@@ -147,7 +147,7 @@ class App extends Component {
             location={this.state.location}
             date={this.state.date}
             src={this.state.src}
-            temp={this.state.temp}
+            temperature={this.state.temperature}
             pressure={this.state.pressure}
             humidity={this.state.humidity}
             windSpeed={this.state.windSpeed}
@@ -194,12 +194,12 @@ class App extends Component {
         <aside>
           <InfoBox
             visible={this.state.visible}
-            in={this.state.in}
-            w1={this.state.w1}
-            w2={this.state.w2}
-            w3={this.state.w3}
-            w4={this.state.w4}
-            w5={this.state.w5}
+            animationStart={this.state.IsAnimationStarted}
+            message1={this.state.message1}
+            message2={this.state.message2}
+            message3={this.state.message3}
+            message4={this.state.message4}
+            message5={this.state.message5}
           />
         </aside>
       </div>

@@ -16,8 +16,20 @@ const transitionStyles = {
 };
 
 const InfoBox = props => {
+  let messages = [
+    { id: 1, name: props.message1 },
+    { id: 2, name: props.message2 },
+    { id: 3, name: props.message3 },
+    { id: 4, name: props.message4 },
+    { id: 5, name: props.message5 }
+  ];
+
+  const listItems = messages.map(message => (
+    <li key={message.id}>{message.name}</li>
+  ));
+
   return (
-    <Transition in={props.in} timeout={0}>
+    <Transition in={props.animationStart} timeout={0}>
       {state => (
         <div
           style={{
@@ -29,13 +41,7 @@ const InfoBox = props => {
             id="infoBox"
             style={props.visible ? { display: "block" } : { display: "none" }}
           >
-            <ul>
-              <li id="w1">{props.w1}</li>
-              <li id="w2">{props.w2}</li>
-              <li id="w3">{props.w3}</li>
-              <li id="w4">{props.w4}</li>
-              <li id="w5">{props.w5}</li>
-            </ul>
+            <ul>{listItems}</ul>
           </div>
         </div>
       )}
